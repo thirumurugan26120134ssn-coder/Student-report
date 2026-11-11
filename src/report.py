@@ -53,8 +53,8 @@ def main():
 
     base_dir = Path(__file__).resolve().parent.parent
 
-    input_file = "./input/students.txt"
-    output_file ="./output/report.txt"
+    input_file = "/home/runner/work/Student-report/Student-report/input/student.txt"
+    output_file ="/home/runner/work/Student-report/Student-report/output/report.txt"
 
     students = load_students(input_file)
 
