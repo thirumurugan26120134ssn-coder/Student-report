@@ -42,3 +42,14 @@ jobs:
         with:
           name: student-performance-report
           path: output/report.txt
+
+      - name: Debug Repository Structure
+        run: |
+          echo "Current Directory:"
+          pwd
+
+          echo "Repository Files:"
+          ls -la
+
+          echo "Searching for students.txt:"
+          find . -name "students.txt"
