@@ -48,26 +48,26 @@ Status: REPORT GENERATED SUCCESSFULLY
 
     return report
 
-
 def main():
 
     base_dir = Path(__file__).resolve().parent.parent
 
-    input_file = "/home/runner/work/Student-report/Student-report/input/student.txt"
-    output_file ="/home/runner/work/Student-report/Student-report/output/report.txt"
+    input_file = base_dir / "input" / "student.txt"
+    output_file = base_dir / "output" / "report.txt"
 
     students = load_students(input_file)
 
     report = generate_report(students)
 
-    output_file.parent.mkdir(exist_ok=True)
+    output_file.parent.mkdir(parents=True, exist_ok=True)
 
-    with open(output_file, "w") as file:
-        file.write(report)
+    output_file.write_text(report, encoding="utf-8")
 
     print(report)
 
-    print("Report saved successfully!")
+    print(f"Report saved successfully: {output_file}")
+
+
 
 
 if __name__ == "__main__":
