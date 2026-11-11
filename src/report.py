@@ -1,6 +1,5 @@
 from pathlib import Path
 
-file_path="input/student.txt"
 def load_students(file_path):
     students = []
 
@@ -52,14 +51,16 @@ Status: REPORT GENERATED SUCCESSFULLY
 
 def main():
 
-    input_file = "input/students.txt"
-    output_file = "output/report.txt"
+    base_dir = Path(__file__).resolve().parent.parent
+
+    input_file = base_dir / "input" / "students.txt"
+    output_file = base_dir / "output" / "report.txt"
 
     students = load_students(input_file)
 
     report = generate_report(students)
 
-    Path("output").mkdir(exist_ok=True)
+    output_file.parent.mkdir(exist_ok=True)
 
     with open(output_file, "w") as file:
         file.write(report)
