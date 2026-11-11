@@ -1,0 +1,44 @@
+name: Student Report Generator CI
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+jobs:
+  generate-and-test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      # Step 1: Get repository source code
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      # Step 2: Install Python
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      # Step 3: Execute Python Application
+      - name: Generate Student Report
+        run: python src/report.py
+
+      # Step 4: Execute Automated Tests
+      - name: Run Test Cases
+        run: python -m unittest discover -s tests -v
+
+      # Step 5: Upload Generated Report
+      - name: Upload Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: student-performance-report
+          path: output/report.txt
