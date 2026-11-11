@@ -1,6 +1,6 @@
 from pathlib import Path
 
-
+file_path="input/student.txt"
 def load_students(file_path):
     students = []
 
